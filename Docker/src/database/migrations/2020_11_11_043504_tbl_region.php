@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypeIngredientsTable extends Migration
+class TblRegion extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,7 @@ class CreateTypeIngredientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_ingredients', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -27,6 +23,6 @@ class CreateTypeIngredientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_ingredients');
+        //
     }
 }
