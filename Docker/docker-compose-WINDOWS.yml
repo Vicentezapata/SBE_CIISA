@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-  db_ciisa_tpc:  
+  db_ciisa_sbe:  
     image: mysql:5.7
     container_name: db_ciisa_sbe
     hostname: mysql
@@ -17,7 +17,7 @@ services:
       - mysql-data:/var/lib/mysql
 
 
-  web_ciisa_tpc:
+  web_ciisa_sbe:
     build: .
     container_name: ciisa_sbe_app
     hostname: ciisa_sbe_app
