@@ -1,0 +1,48 @@
+version: '3.1'
+
+services:
+  db_ciisa_tpc:  
+    image: mysql:5.7
+    container_name: db_ciisa_sbe
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=CiIsA_2@2@
+      - MYSQL_DATABASE=ciisa_sbe_db
+      - MYSQL_USER=ciisa_sbe_db
+      - MYSQL_PASSWORD=CiIsA_2@2@
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:5556:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+
+  web_ciisa_tpc:
+    build: .
+    container_name: ciisa_sbe_app
+    hostname: ciisa_sbe_app
+    restart: unless-stopped
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8300:80"
+    depends_on:
+      - db_ciisa_sbe
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_ciisa_sbe:db
+    ports:
+      - "9006:80"
+    environment:
+      - MYSQL_ROOT_PASSWORD=CiIsA_2@2@
+      - MYSQL_DATABASE=ciisa_sbe_db
+      - MYSQL_USER=ciisa_sbe_db
+      - MYSQL_PASSWORD=CiIsA_2@2@
+
+
+volumes:
+  mysql-data:
+
+networks:
+  default:

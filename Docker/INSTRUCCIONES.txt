@@ -1,0 +1,2 @@
+Renombrar el archivo docker-compose-WINDOWS o docker-compose-LINUX segun su computador como docker-compose
+En un terminal que este apuntado a ka carpeta donde esta este archivo ejecutar, docker-compose up -d
